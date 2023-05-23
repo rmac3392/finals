@@ -1,3 +1,4 @@
+import 'package:finals/ApiEndpoint.dart';
 import 'package:finals/Questionaire.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,8 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ApiEndpoint api = ApiEndpoint();
+    // Future<Map<String, dynamic>> data;
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       body: Column(
@@ -64,7 +67,9 @@ class Login extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      final data = await api.fetchData();
+                      print(data);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
